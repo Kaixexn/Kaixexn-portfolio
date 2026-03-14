@@ -391,80 +391,6 @@ footer{
   .projects-grid{grid-template-columns:1fr;}
   .about-stats{grid-template-columns:1fr 1fr;}
 }
-
-/* ── CONTACT ───────────────────────── */
-#contact{border-top:1px solid var(--border);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
-
-.contact-left{}
-.contact-heading{
-  font-family:var(--sans);font-size:clamp(28px,4vw,48px);font-weight:800;
-  color:#fff;line-height:1.1;margin-bottom:16px;letter-spacing:-.02em;
-}
-.contact-heading span{color:var(--accent);}
-.contact-sub{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;}
-
-.contact-links{display:flex;flex-direction:column;gap:12px;}
-.contact-link{
-  display:flex;align-items:center;gap:16px;
-  padding:14px 18px;
-  background:var(--surface);border:1px solid var(--border);border-radius:6px;
-  text-decoration:none;transition:border-color .2s,transform .2s;
-  position:relative;overflow:hidden;
-}
-.contact-link::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
-  background:var(--accent);transform:scaleY(0);transition:transform .2s;
-  transform-origin:bottom;
-}
-.contact-link:hover{border-color:var(--accent);transform:translateX(4px);}
-.contact-link:hover::before{transform:scaleY(1);}
-.cl-icon{
-  width:36px;height:36px;border-radius:4px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;flex-shrink:0;
-  background:rgba(99,179,237,.1);border:1px solid var(--border);
-}
-.cl-label{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.12em;display:block;margin-bottom:2px;}
-.cl-value{font-family:var(--mono);font-size:12px;color:var(--text);letter-spacing:.04em;}
-
-/* Contact form */
-.contact-form{display:flex;flex-direction:column;gap:14px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.form-group{display:flex;flex-direction:column;gap:6px;}
-.form-group.full{grid-column:1/-1;}
-.form-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.12em;}
-.form-input,.form-textarea{
-  background:var(--surface);border:1px solid var(--border);border-radius:4px;
-  padding:12px 14px;color:var(--text);font-family:var(--body);font-size:14px;
-  outline:none;transition:border-color .2s;width:100%;
-}
-.form-input:focus,.form-textarea:focus{border-color:var(--accent);}
-.form-input::placeholder,.form-textarea::placeholder{color:var(--dim);}
-.form-textarea{min-height:120px;resize:vertical;line-height:1.6;}
-.form-submit{
-  font-family:var(--mono);font-size:12px;letter-spacing:.1em;font-weight:700;
-  padding:14px 28px;background:var(--accent);color:var(--bg);
-  border:none;border-radius:4px;transition:all .2s;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;
-}
-.form-submit:hover{background:var(--accent2);transform:translateY(-2px);}
-.form-note{font-family:var(--mono);font-size:10px;color:var(--dim);text-align:center;letter-spacing:.06em;}
-.form-success{
-  display:none;text-align:center;padding:24px;
-  background:rgba(104,211,145,.07);border:1px solid rgba(104,211,145,.2);
-  border-radius:6px;
-}
-.form-success.show{display:block;}
-.form-success p{font-family:var(--mono);font-size:13px;color:var(--green);}
-
-@media(max-width:900px){
-  .contact-grid{grid-template-columns:1fr;gap:40px;}
-}
-@media(max-width:500px){
-  .form-row{grid-template-columns:1fr;}
-}
 </style>
 </head>
 <body>
@@ -475,14 +401,13 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><span>~/</span>errald.dev</div>
+  <div class="nav-logo"><span>~/</span>Errald.dev</div>
   <div class="nav-links">
     <a href="#about" data-num="01">about</a>
     <a href="#projects" data-num="02">projects</a>
     <a href="#skills" data-num="03">skills</a>
-    <a href="#contact" data-num="04">contact</a>
   </div>
-  <a href="/cdn-cgi/l/email-protection#dcb5b1acbdaea8b5bdbebbbbee9cbbb1bdb5b0f2bfb3b1" class="nav-cta">get in touch →</a>
+  <a href="mailto:errald@email.com" class="nav-cta">get in touch →</a>
 </nav>
 
 <!-- HERO -->
@@ -501,7 +426,7 @@ footer{
       </p>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">view my work ↓</a>
-        <a href="https://" class="btn-ghost" target="_blank" style="display:none">GitHub ↗</a>
+        <a href="https://github.com" class="btn-ghost" target="_blank">GitHub ↗</a>
       </div>
     </div>
 
@@ -648,7 +573,7 @@ footer{
         </div>
         <div class="featured-links">
           <a href="#" class="proj-link live">view live ↗</a>
-          <a href="https:///EMERSON-MEMORY" 
+          <a href="https://github.com" class="proj-link code">GitHub →</a>
         </div>
       </div>
     </div>
@@ -658,51 +583,49 @@ footer{
 
       <div class="project-card fade-up">
         <div class="project-preview">
-          <div class="project-preview-bg" style="background:linear-gradient(135deg,#1a0a1a 0%,#2d1030 100%);"></div>
+          <div class="project-preview-bg"></div>
           <div class="project-preview-grid"></div>
           <div class="project-preview-label">
-            <span class="project-icon">🌸</span>
-            <div class="project-preview-title">FLOWERS-FOR-YOU</div>
+            <span class="project-icon">🏛️</span>
+            <div class="project-preview-title">COMMLAB V2</div>
           </div>
-          <div class="project-preview-tag" style="background:rgba(252,129,180,.12);color:#fc81b4;border-color:rgba(252,129,180,.25);">gift</div>
+          <div class="project-preview-tag">live</div>
         </div>
         <div class="project-body">
-          <div class="project-name">Flowers For You</div>
-          <p class="project-desc">An interactive digital gift — a beautifully crafted flower experience you can send to someone special. Because sometimes a website is the most thoughtful present.</p>
+          <div class="project-name">CommLab V2</div>
+          <p class="project-desc">A refined communication laboratory platform — clean, structured, and built to handle real academic workflows with a polished interface.</p>
           <div class="project-tags">
             <span class="tag">HTML</span>
             <span class="tag">CSS</span>
             <span class="tag">JavaScript</span>
           </div>
           <div class="project-links">
-            <a href="https://kaixexn.github.io/Flowers-for-you" class="proj-link live">live ↗</a>
-            <a href="https:///Flowers-for-you" class="proj-link code">code →</a>
+            <a href="#" class="proj-link live">live ↗</a>
+            <a href="https://github.com" class="proj-link code">code →</a>
           </div>
         </div>
       </div>
 
       <div class="project-card fade-up">
         <div class="project-preview">
-          <div class="project-preview-bg" style="background:linear-gradient(135deg,#0a1a10 0%,#0d2d1a 100%);"></div>
+          <div class="project-preview-bg"></div>
           <div class="project-preview-grid"></div>
           <div class="project-preview-label">
-            <span class="project-icon">🎮</span>
-            <div class="project-preview-title">SIMULATION</div>
+            <span class="project-icon">🎬</span>
+            <div class="project-preview-title">VIDEO PRODUCTION</div>
           </div>
-          <div class="project-preview-tag" style="background:rgba(104,211,145,.12);color:#68d391;border-color:rgba(104,211,145,.25);">gamified</div>
+          <div class="project-preview-tag">freelance</div>
         </div>
         <div class="project-body">
-          <div class="project-name">Simulation</div>
-          <p class="project-desc">A gamified tutorial for effective communication skills — interactive scenarios that teach real-world communication through engaging, game-like experiences.</p>
+          <div class="project-name">Freelance Production Work</div>
+          <p class="project-desc">Years of client video editing, film production, and layout design work before I ever touched code. The eye for craft carried over.</p>
           <div class="project-tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Gamified</span>
+            <span class="tag">Video Editing</span>
+            <span class="tag">Film</span>
+            <span class="tag">Layout</span>
           </div>
           <div class="project-links">
-            <a href="https://kaixexn.github.io/SIMULATION-" class="proj-link live">live ↗</a>
-            <a href="https:///SIMULATION-" class="proj-link code">code →</a>
+            <a href="https://github.com" class="proj-link code">view portfolio →</a>
           </div>
         </div>
       </div>
@@ -719,7 +642,7 @@ footer{
         </div>
         <div class="project-body">
           <div class="project-name" style="color:var(--dim);">Next Project</div>
-          <p class="project-desc">Something new is in the works. Check back soon.</p>
+          <p class="project-desc">Something new is in the works. Check back soon or follow on GitHub.</p>
           <div class="project-tags">
             <span class="tag" style="opacity:.5;">TBD</span>
           </div>
@@ -730,93 +653,18 @@ footer{
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-wrap">
-    <div class="section-header fade-up">
-      <span class="section-num">03.</span>
-      <h2 class="section-title">Get In Touch</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-left fade-up">
-        <div class="contact-heading">Let's build<br/><span>something.</span></div>
-        <p class="contact-sub">Whether you need a website, a video edited, a layout designed, or just want to collab on something cool — I'm open to it. Grade 11 student, professional work ethic.</p>
-        <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#96fffbe6f7e4e2fff7f4f1f1a4d6f1fbf7fffab8f5f9fb" class="contact-link">
-            <div class="cl-icon">✉</div>
-            <div>
-              <span class="cl-label">// email</span>
-              <span class="cl-value"><span class="__cf_email__" data-cfemail="71181c0110030518101316164331161c10181d5f121e1c">[email&#160;protected]</span></span>
-            </div>
-          </a>
-          <a href="tel:+639484417529" class="contact-link">
-            <div class="cl-icon">📱</div>
-            <div>
-              <span class="cl-label">// phone · viber · whatsapp</span>
-              <span class="cl-value">+63 948 441 7529</span>
-            </div>
-          </a>
-          <a href="https://www.facebook.com/errald.joshua.buenaflor" target="_blank" class="contact-link">
-            <div class="cl-icon">f</div>
-            <div>
-              <span class="cl-label">// facebook</span>
-              <span class="cl-value">Errald Joshua Buenaflor</span>
-            </div>
-          </a>
-          <a href="https://" target="_blank" class="contact-link">
-            <div class="cl-icon">&lt;/&gt;</div>
-            <div>
-              <span class="cl-label">// github</span>
-              <span class="cl-value"></span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="contact-right fade-up">
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/impartiabgg2@gmail.com" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">// your_name</label>
-              <input class="form-input" type="text" name="name" placeholder="Juan dela Cruz" required/>
-            </div>
-            <div class="form-group">
-              <label class="form-label">// your_email</label>
-              <input class="form-input" type="email" name="email" placeholder="juan@email.com" required/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">// subject</label>
-            <input class="form-input" type="text" name="subject" placeholder="Website project, collab, etc."/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">// message</label>
-            <textarea class="form-textarea" name="message" placeholder="Tell me what you need..." required></textarea>
-          </div>
-          <button type="submit" class="form-submit">send message →</button>
-          <p class="form-note">// or reach me directly at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e38a8e938291978a82818484d1a3848e828a8fcd808c8e">[email&#160;protected]</a></p>
-        </form>
-        <div class="form-success" id="formSuccess">
-          <p>✓ message sent — I'll get back to you soon!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">
     designed & built by <span>Errald Joshua Buenaflor</span> · 2025
   </div>
   <div class="footer-links">
-    
-    <a href="/cdn-cgi/l/email-protection#afc6c2dfcedddbc6cecdc8c89defc8c2cec6c381ccc0c2">Email</a>
-    <a href="https://www.facebook.com/errald.joshua.buenaflor" target="_blank">Facebook</a>
+    <a href="https://github.com" target="_blank">GitHub</a>
+    <a href="mailto:errald@email.com">Email</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Custom cursor
 const cursor=document.getElementById('cursor');
 const ring=document.getElementById('cursorRing');
@@ -844,12 +692,6 @@ document.querySelectorAll('.projects-grid .project-card, .skills-grid .skill-ite
   el.classList.add('fade-up');
   obs.observe(el);
 });
-
-// Contact form — Formspree AJAX
-const form=document.getElementById('contactForm');
-const success=document.getElementById('formSuccess');
-if(form){
-  form.addEventListener('submit',async e=>{
-    e.preventDefault();
-    const btn=form.querySelector('.form-submit');
-    btn.textContent='sending...';
+</script>
+</body>
+</html>
