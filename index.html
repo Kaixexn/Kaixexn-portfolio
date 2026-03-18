@@ -29,6 +29,7 @@
 html{scroll-behavior:smooth;font-size:16px;}
 body{background:var(--ink);color:var(--white);font-family:var(--body);overflow-x:hidden;line-height:1.6;}
 *{cursor:none!important;}
+@media(hover:none){*{cursor:auto!important;}.cur,.cur-r{display:none!important;}}
 
 .cur{width:12px;height:12px;background:var(--p);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);top:-20px;left:-20px;opacity:0;transition:opacity .25s,transform .15s,background .2s;}
 .cur.on{opacity:1;}
@@ -194,35 +195,141 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:32px 80p
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
 
-@media(max-width:1024px){
-  #home{grid-template-columns:1fr;}
-  .hero-right{display:none;}
-  .hero-left{padding:120px 40px 80px;}
-  #about{grid-template-columns:1fr;}
-  .about-sidebar{position:static;height:auto;padding:80px 40px 40px;}
-  .about-num{font-size:80px;}
-  .about-main{padding:40px;}
-  .featured-work{grid-template-columns:1fr;}
-  .fw-visual{min-height:260px;border-right:none;border-bottom:1px solid var(--border);}
-  .fw-info{padding:40px;}
-  .project-row{grid-template-columns:1fr;}
-  .project-item{border-right:none;}
-  #contact{grid-template-columns:1fr;}
-  .contact-left{border-right:none;}
-  .work-header{padding:0 40px;}
-  footer{padding:28px 40px;flex-direction:column;gap:12px;text-align:center;}
-  .side-nav{display:none;}
+.mob-nav{
+  display:none;
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:60px;padding:0 24px;
+  background:rgba(7,4,15,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  align-items:center;justify-content:space-between;
 }
-@media(max-width:600px){
-  .hero-left{padding:100px 24px 60px;}
-  .about-main{padding:40px 24px;}
-  .about-sidebar{padding:80px 24px 40px;}
-  .work-header{padding:0 24px;}
-  .fw-info{padding:32px 24px;}
-  .project-item{padding:28px 24px;}
-  .contact-left,.contact-right{padding:60px 24px;}
-  footer{padding:24px;}
+.mob-logo{font-family:var(--mono);font-size:13px;color:var(--p);letter-spacing:.04em;}
+.mob-logo span{color:var(--dim);}
+.mob-burger{
+  width:36px;height:36px;background:transparent;border:1px solid var(--border);
+  border-radius:2px;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:5px;padding:0;transition:border-color .2s;
+}
+.mob-burger:hover{border-color:var(--p);}
+.mob-burger span{display:block;width:16px;height:1.5px;background:var(--muted);transition:all .3s;}
+.mob-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--p);}
+.mob-burger.open span:nth-child(2){opacity:0;}
+.mob-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--p);}
+.mob-menu{
+  display:none;position:fixed;inset:60px 0 0 0;z-index:499;
+  background:rgba(7,4,15,.97);backdrop-filter:blur(20px);
+  flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  border-top:1px solid var(--border);
+}
+.mob-menu.open{display:flex;}
+.mob-menu a{
+  font-family:var(--bebas);font-size:48px;letter-spacing:.04em;
+  color:var(--dim);text-decoration:none;transition:color .2s;
+  padding:8px 0;width:100%;text-align:center;
+}
+.mob-menu a:hover{color:var(--p);}
+.mob-menu-foot{
+  position:absolute;bottom:40px;
+  font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.1em;
+}
+
+@media(max-width:1024px){
+  .side-nav{display:none;}
+  .mob-nav{display:flex;}
+
+  #home{grid-template-columns:1fr;min-height:100svh;}
+  .hero-right{display:none;}
+  .hero-left{
+    padding:90px 32px 60px;
+    justify-content:center;
+  }
+  .hero-left::after{display:none;}
+  .hero-eyebrow{font-size:10px;margin-bottom:16px;}
+  .hero-fname{font-size:clamp(54px,13vw,80px);}
+  .hero-lname{font-size:clamp(54px,13vw,80px);}
+  .hero-role-line{font-size:10px;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+  .hero-desc{font-size:14px;margin-bottom:32px;max-width:100%;}
+  .hero-actions{gap:10px;}
+  .btn-solid,.btn-line{padding:12px 22px;font-size:11px;}
+  .hero-stat-bar{gap:24px;padding:24px 0;}
+  .hstat-num{font-size:30px;}
+  .hstat-label{font-size:9px;}
+
+  #about{grid-template-columns:1fr;}
+  .about-sidebar{
+    position:static;height:auto;
+    padding:72px 32px 40px;
+    border-right:none;border-bottom:1px solid var(--border);
+  }
+  .about-num{font-size:72px;}
+  .about-section-title{font-size:38px;}
+  .about-sidebar-bio{font-size:12px;}
+  .about-main{padding:48px 32px 60px;}
+  .about-intro{font-size:clamp(20px,5vw,28px);margin-bottom:36px;}
+  .about-body-text{font-size:14px;max-width:100%;}
+  .skill-rows{max-width:100%;}
+  .skill-row-name{width:120px;font-size:11px;}
+
+  #work{padding:72px 0 60px;}
+  .work-header{padding:0 32px;margin-bottom:40px;flex-direction:column;align-items:flex-start;gap:4px;}
+  .work-big-title{font-size:clamp(52px,12vw,80px);}
+  .featured-work{grid-template-columns:1fr;}
+  .fw-visual{
+    min-height:240px;
+    border-right:none;
+    border-bottom:1px solid var(--border);
+  }
+  .fw-big{font-size:clamp(32px,9vw,52px);}
+  .fw-info{padding:36px 32px;}
+  .fw-num{font-size:60px;}
+  .fw-title{font-size:clamp(22px,5vw,30px);}
+  .fw-desc{font-size:13px;}
+  .project-row{grid-template-columns:1fr;}
+  .project-item{
+    padding:32px;
+    border-right:none;
+    border-bottom:1px solid var(--border);
+  }
+  .project-item:last-child{border-bottom:none;}
+  .pi-visual{height:140px;}
+  .pi-name{font-size:20px;}
+  .pi-desc{font-size:13px;}
+
+  #contact{grid-template-columns:1fr;min-height:auto;}
+  .contact-left{
+    border-right:none;
+    border-bottom:1px solid var(--border);
+    padding:72px 32px 48px;
+  }
+  .contact-headline{font-size:clamp(52px,12vw,80px);}
+  .contact-body{max-width:100%;font-size:14px;}
+  .contact-right{padding:48px 32px 72px;}
+  .form-heading{font-size:24px;margin-bottom:28px;}
   .cf-row{grid-template-columns:1fr;}
+
+  footer{
+    padding:28px 32px;
+    flex-direction:column;gap:12px;text-align:center;
+  }
+}
+
+@media(max-width:480px){
+  .hero-left{padding:80px 20px 48px;}
+  .hero-fname,.hero-lname{font-size:clamp(48px,14vw,68px);}
+  .hero-stat-bar{gap:16px;}
+  .hstat-num{font-size:26px;}
+  .about-sidebar{padding:64px 20px 36px;}
+  .about-main{padding:40px 20px 48px;}
+  .work-header{padding:0 20px;}
+  .fw-info{padding:28px 20px;}
+  .project-item{padding:24px 20px;}
+  .contact-left{padding:60px 20px 40px;}
+  .contact-right{padding:40px 20px 60px;}
+  .ci{padding:13px 14px;}
+  .ci-val{font-size:11px;}
+  footer{padding:24px 20px;}
+  .mob-nav{padding:0 20px;}
 }
 </style>
 </head>
@@ -231,6 +338,21 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:32px 80p
 <div class="noise"></div>
 <div class="cur" id="cur"></div>
 <div class="cur-r" id="curR"></div>
+
+<header class="mob-nav">
+  <div class="mob-logo"><span>~/</span>errald.dev</div>
+  <button class="mob-burger" id="mobBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#home" class="mob-link">Home</a>
+  <a href="#about" class="mob-link">About</a>
+  <a href="#work" class="mob-link">Work</a>
+  <a href="#contact" class="mob-link">Contact</a>
+  <div class="mob-menu-foot">errald joshua buenaflor · 2025</div>
+</div>
 
 <nav class="side-nav" id="sideNav">
   <button class="side-dot active" data-label="HOME" data-target="home"></button>
@@ -378,7 +500,7 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:32px 80p
       <div class="work-label">// selected work</div>
       <div class="work-big-title">My <span>Projects.</span></div>
     </div>
-    <div class="work-count">04 projects total</div>
+    <div class="work-count">03 projects + more coming</div>
   </div>
 
   <div class="featured-work reveal">
@@ -422,7 +544,7 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:32px 80p
         <span class="pi-tag">CSS</span>
         <span class="pi-tag">JavaScript</span>
       </div>
-      <a href="https://kaixexn.github.io/Flowers-for-you" class="pi-link" target="_blank" rel="noopener">view live site ↗</a>
+      <a href="https://kaixexn.github.io/Flowers-for-you/" class="pi-link" target="_blank" rel="noopener">view live site ↗</a>
     </div>
 
     <div class="project-item reveal">
@@ -440,25 +562,18 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:32px 80p
         <span class="pi-tag">JavaScript</span>
         <span class="pi-tag">Gamified</span>
       </div>
-      <a href="https://kaixexn.github.io/SIMULATION-" class="pi-link" target="_blank" rel="noopener">view live site ↗</a>
+      <a href="https://kaixexn.github.io/SIMULATION-/" class="pi-link" target="_blank" rel="noopener">view live site ↗</a>
     </div>
 
-    <div class="project-item reveal">
+    <div class="project-item reveal" style="border-style:dashed;opacity:.45;">
       <div class="pi-visual" style="background:linear-gradient(135deg,#0d0520,#1a0838);">
         <div class="pi-grid"></div>
-        <span class="pi-icon">🎨</span>
-        <span class="pi-badge" style="background:rgba(180,120,255,.12);color:#c49bff;border-color:rgba(180,120,255,.3);">design</span>
+        <span class="pi-icon" style="opacity:.3;">⚡</span>
       </div>
       <div class="pi-num">04</div>
-      <div class="pi-name">Graphic Design Work</div>
-      <p class="pi-desc">Years of freelance graphic design — posters, layouts, social graphics, and visual branding. Made with Canva and a strong sense of composition built through film and production work.</p>
-      <div class="pi-tags">
-        <span class="pi-tag">Canva</span>
-        <span class="pi-tag">Layout</span>
-        <span class="pi-tag">Branding</span>
-        <span class="pi-tag">Freelance</span>
-      </div>
-      <a href="https://www.canva.com/design/DAGqz23jQKI/w-IpUXRkL3nw6iBdBlBbOA/view?utm_content=DAGqz23jQKI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h17d93cc3a5" class="pi-link pi-link-canva" target="_blank" rel="noopener">view on canva ↗</a>
+      <div class="pi-name" style="color:var(--dim);">Coming Soon</div>
+      <p class="pi-desc">Something new is in the works. Check back soon.</p>
+      <div class="pi-tags"><span class="pi-tag" style="opacity:.5;">TBD</span></div>
     </div>
   </div>
 </section>
@@ -577,6 +692,23 @@ dots.forEach(d=>{
     document.getElementById(d.dataset.target).scrollIntoView({behavior:'smooth'});
   });
 });
+
+const burger=document.getElementById('mobBurger');
+const mobMenu=document.getElementById('mobMenu');
+if(burger&&mobMenu){
+  burger.addEventListener('click',()=>{
+    const open=mobMenu.classList.toggle('open');
+    burger.classList.toggle('open',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  mobMenu.querySelectorAll('.mob-link').forEach(a=>{
+    a.addEventListener('click',()=>{
+      mobMenu.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+}
 
 const form=document.getElementById('contactForm');
 const cfSuccess=document.getElementById('cfSuccess');
